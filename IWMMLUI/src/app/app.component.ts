@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'IWMMLUI';
+  year: number = new Date().getFullYear();
 }
