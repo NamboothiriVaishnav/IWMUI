@@ -1,0 +1,13 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+
+  .main {
+    margin-top: 75px; /* Add a top margin to avoid content overlay */
+    margin-bottom: 75px; /* Add a bottom margin to avoid footer overlay */
+  }
