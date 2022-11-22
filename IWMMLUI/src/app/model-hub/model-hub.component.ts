@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IModelHubModel, ModelHubModel } from '../Models/modelHubModel';
 
 @Component({
   selector: 'app-model-hub',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./model-hub.component.scss']
 })
 export class ModelHubComponent implements OnInit {
-
-  constructor() { }
+  modelHubDetails: IModelHubModel[] = ModelHubModel;
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+  showModel(modelId: any) {    
+    this.router.navigate(['/modelhubmodel', modelId]);
   }
 
 }
