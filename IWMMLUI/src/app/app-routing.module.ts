@@ -6,6 +6,7 @@ import { ModelHubComponent } from './model-hub/model-hub.component';
 import { AutoMlComponent } from './auto-ml/auto-ml.component';
 import { DataModelComponent } from './data-model/data-model.component';
 import { DatasetComponent } from './dataset/dataset.component';
+import { ModelHubModelComponent } from './model-hub/model-hub-model/model-hub-model.component';
 
 const routes: Routes = [
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'automl', component: AutoMlComponent, canActivate: [MsalGuard] },
   { path: 'datamodel', component: DataModelComponent, canActivate: [MsalGuard] },
   { path: 'dataset', component: DatasetComponent, canActivate: [MsalGuard] },
+  { path: 'modelhubmodel/:id', component: ModelHubModelComponent, canActivate: [MsalGuard] }
 ];
 
 @NgModule({

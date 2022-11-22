@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { DataModelComponent } from './data-model/data-model.component';
 import { DatasetComponent } from './dataset/dataset.component';
+import { ModelHubModelComponent } from './model-hub/model-hub-model/model-hub-model.component';
 
 const environmentVariable = environment;
 @NgModule({
@@ -25,7 +26,8 @@ const environmentVariable = environment;
     ModelHubComponent,
     HeaderComponent,
     DataModelComponent,
-    DatasetComponent
+    DatasetComponent,
+    ModelHubModelComponent
   ],
   imports: [
     BrowserModule,
