@@ -24,7 +24,7 @@ export class DataModelComponent implements OnInit {
     this.http.get(dataModelHtmlFileDetail, { responseType: 'text' })
       .subscribe(logo => {
         this.dataModelInnerHtmlPage = this.sanitizer.bypassSecurityTrustHtml(logo);
-      });
+      }); 
   }
 
 }
