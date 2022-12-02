@@ -248,7 +248,6 @@
     </div>
     <br>
     
-
     <div class="row">
         <p class="text-justify">
             • Classification Data
@@ -288,12 +287,13 @@
         <p>Before passing sensor values as input to the Failure Prediction and Future Dataset Generation models, input sensor
            values have been normalized in range of 0-1 including boundaries. The input sensors column used are as following :-
            IONGAUGEPRESSURE, ETCHSUPPRESSORCURRENT, FLOWCOOLPRESSURE, ACTUALROTATIONANGLE, ACTUALSTEPDURATION. This is done
-           to make the data distribution uniform throughout the range of 0-1.</p>
+           to make the data distribution uniform throughout the range of 0-1.
+        </p>
     </div>
     <div class="row">
         <h4>Input</h4>
         <p>The details of transformer(s) as mentioned in the dataset in the same order</p>
-        <pre>
+            <pre>
             <code>
                 path ="/content/drive/MyDrive/trainM102_FaultM102_51l.csv"
                 Sensor_data =pd.read_csv(path)
@@ -307,6 +307,7 @@
             </code>
         </pre>
     </div>
+    
     <div class="row">
         <h4>Load Model</h4>
         <h5>LSTM Model</h5>
