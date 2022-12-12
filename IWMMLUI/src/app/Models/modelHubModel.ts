@@ -25,6 +25,21 @@ export const ModelHubModel: IModelHubModel[] = [
         sourceCodeDownloadName: "PredictiveMaintenanceOfIonMillEtchmachine_SourceCode.zip",
         datasetDownloadPath: "",
         datasetDownloadName: "PredictiveMaintenanceOfIonMillEtchmachine_Dataset.zip"
-    }
+    },
+    { 
+        id: 2,
+        useCase: "PCB Manufacturing Defect Detection ",
+        description: "Yolo-v5 for Manufactured PCB Board as a part of product quality test.",
+        imagePath: "assets/modelHubImageFiles/PcbDetection.png",
+        htmlFilePath:"../../assets/modelHubHtmlFiles/PcbDefectDetection/pcbModel.html",
+        modelDownloadPath: "",
+        modelDownloadName: "PCB Manufacturing Defect Detection_Model.zip",
+        sourceCodeDownloadPath: "",
+        sourceCodeDownloadName: "PCB Manufacturing Defect Detection_SourceCode.zip",
+        datasetDownloadPath: "",
+        datasetDownloadName: "PCB Manufacturing Defect Detection_Dataset.zip"
+    },
+    
+
  
 ]
