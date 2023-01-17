@@ -107,7 +107,7 @@ import keras
 # model.compile(optimizer='adam', loss='mse')
 
 # COMMAND ----------
-
+ 
 import tensorflow as tf
 lstm_multi = tf.keras.models.Sequential()
 lstm_multi.add(tf.keras.layers.LSTM(150,input_shape=(length,scaled_train.shape[1]),return_sequences=True))
