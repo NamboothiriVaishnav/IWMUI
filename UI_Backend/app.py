@@ -1,7 +1,7 @@
 from ast import Try
 import json
 from flask import Flask ,request
-from blob_sdk import listing_blobs_directories,ConnectToStorageAcc,upload_file_to_directory
+from blob_sdk import listing_blobs_directories,upload_file_to_directory
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
@@ -15,9 +15,9 @@ def f22():
 @app.route('/upload_file_to_directory',methods=['POST'])
 def f23():
     if(request.method=='POST'):
-        ConnectToStorageAcc('iwmstgacc','871wPYug1CXqXhOomD9hJGou/5ulJhgr9uW7MjS8BEhZLrXUfz4FXr26Ve6G8sQsnDQVTNBWRYIT+ASt3kzLcA==')
-        upload_file_to_directory("C:\\Users\\Dataset_Bill1.csv")
+        path_param=request.args.get('path')
+        upload_file_to_directory(path_param)
         return "Uploaded Successfully"
 
 if __name__ == '__main__':
-    app.run(debug = True)   
+    app.run(debug = True)
