@@ -64,30 +64,30 @@
         <h4>Process of Training Image classification Model.</h4>
         <p>The process of training an image classification model typically involves the following steps:
         </p>
-        <h3>Data Preparation: </h3>
+        <h4>Data Preparation: </h4>
         <p>
             Collect and prepare the dataset for training. This includes data labeling, data cleaning, data augmentation, and data normalization.
         </p>
-        <h3>Model Selection:  </h3>
+        <h4>Model Selection:  </h4>
         <p>
             Choose a suitable pre-trained model or build a custom model architecture based on the problem requirements.        </p>
-        <h3>Model Compilation:  </h3>
+        <h4>Model Compilation:  </h4>
         <p>
             Define the objective function, optimizer, and evaluation metrics to be used during the training process.
                 </p>
-        <h3>Model Training:  </h3>
+        <h4>Model Training:  </h4>
         <p>
             Train the model on the prepared dataset. This involves feeding the data to the model, computing the loss, and updating the model parameters using backpropagation.
                 </p>
-        <h3>Model Evaluation:  </h3>
+        <h4>Model Evaluation:  </h4>
         <p>
             Evaluate the model's performance on a validation set. This involves computing metrics such as accuracy, precision, recall, and F1 score.
         </p>
-        <h3>Hyperparameter Tuning:   </h3>
+        <h4>Hyperparameter Tuning:   </h4>
         <p>
         Fine-tune the model hyperparameters, such as learning rate, batch size, and number of epochs, to optimize the model performance. 
         </p>
-        <h3>Model Deployment:   </h3>
+        <h4>Model Deployment:   </h4>
         <p>
             Once the model is trained and evaluated, it can be deployed for inference on new data. This may involve integrating the model into a web application, mobile app, or other production system.
         </p>
@@ -97,126 +97,152 @@
     </div>
     <div class="row">
         
-        <h2>Installing Required Libraries</h2>
+        <h4>Installing Required Libraries</h4>
         <p> pip install -r C:\Users\Rajesh.Mandal\Downloads\democheck\demoprocessor\requirements.txt</p>
-        <h2>Train and hyper-tune the model.</h2>
+        <h4>Train and hyper-tune the model.</h4>
         <p>model.fit(train_generator, validation_data=validation_generator, epochs=epochs, batch_size=bs,steps_per_epoch=len(train_generator), validation_steps=len(validation_generator))</p>
 
     </div>
 
 
     <div class="row">
-        <h4>Model Backbone:</h4>
-        <p>Model Neck is mainly used to generate feature pyramids. Feature pyramids help models to generalize well on object 
-           scaling. It helps to identify the same object with different sizes and scales. Feature pyramids are very useful
-           and help models to perform well on unseen data. Other models use different types of feature pyramid techniques 
-           like FPN, BiFPN, PANet, etc. in Yolo v5 PANet is used as a neck to get feature pyramids.
-        </p>
+        <h4>Training code:</h4>
+        <pre>
+            <code>
+                #load the datasets
+                #train and validation data structure--|
+                #       | 
+                #        --- Good
+                #        --- Bend_pins
+                #        --- Short_pins
+                #        --- Missing_pins
+                
+                
+                
+                train = "/content/drive/MyDrive/Processor/images/train/"
+                val = "/content/drive/MyDrive/Processor/images/val/"
+
+                from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+                train_datagen = ImageDataGenerator(
+                rescale=1./255,
+                shear_range=0.2,
+                zoom_range=0.2,
+                horizontal_flip=True,
+                vertical_flip = True)
+
+                test_datagen = ImageDataGenerator(rescale=1./255)
+
+                train_generator = train_datagen.flow_from_directory(
+                train,
+                target_size=(224, 224),
+                batch_size=32,
+                class_mode='categorical')
+
+                print("train_generator: ",train_generator)
+
+
+                validation_generator = test_datagen.flow_from_directory(
+                val,
+                target_size=(224, 224),
+                batch_size=32,
+                class_mode='categorical')
+
+                img_size = (224,224)
+                if K.image_data_format() == "channels_first":
+                input_shape = (3, img_size[0], img_size[1])
+                else:
+                input_shape = (img_size[0], img_size[1], 3)
+                base = efn.EfficientNetB2(include_top=False, weights="imagenet", input_shape=input_shape) 
+                
+                Downloading data from https://github.com/Callidior/keras-applications/releases/download/efficientnet/efficientnet-b5_weights_tf_dim_ordering_tf_kernels_autoaugment_notop.h5
+                115515392/115515256 [==============================] - 19s 0us/step
+
+                x1 = GlobalAveragePooling2D(name="gap")(base.output)
+                x2 = GlobalMaxPooling2D(name="gmp")(base.output)
+                x = Concatenate(name="concat")([x1, x2])
+
+                x = Dense(4, kernel_initializer="he_normal", name="classifier")(x)
+                x = Activation("softmax", name="softmax")(x)
+
+                model = tf.keras.models.Model(inputs=base.input, outputs=x)
+
+                loss = tf.keras.losses.CategoricalCrossentropy()
+                opt = tf.optimizers.Adam(lr=1e-3)
+                epochs = 50
+                bs = 4
+
+                model.compile(loss=loss, optimizer=opt, metrics=["accuracy"])
+
+
+                model.fit(train_generator, validation_data=validation_generator, epochs=epochs, batch_size=bs,
+                steps_per_epoch=len(train_generator), validation_steps=len(validation_generator))
+
+
+            </code>
+        </pre>
+
+    </div>
+    <div class="row">
+        <h4>Check the training graph</h4>
+        <pre>
+            <code>
+                import matplotlib.pyplot as plt 
+                import seaborn as sns 
+
+                plt.subplots(figsize = (8,4))
+                sns.lineplot(data = pd.DataFrame(hist_acc_loss, index = range(1, 1 + len(hist_epoch))))
+                plt.title("Training Evaluation", fontweight = "bold", fontsize = 20)
+                plt.xlabel("Epochs")
+                plt.ylabel("Metrics")
+                plt.legend(labels = ['val loss','val accuracy','train loss','train accuracy'])
+                plt.show()
+            </code>
+        </pre>
+        <img src="assets/modelHubImageFiles/processorDefect.png" alt="" />
+
+    </div >
+
+    <div class="row">
+        <h4>Test The Model</h4>
+        <pre>
+            <code>
+                #load the model
+                import glob
+                import cv2 
+
+               model = tf.keras.models.load_model("/content/drive/MyDrive/Processor/Model/processoreffB5.h5")
+               class_name = ["bend_pin","Good","missing_pins","short_pins"]
+
+               dest_path = "/content/drive/MyDrive/Processor/result/"
+               for i in glob.glob("/content/drive/MyDrive/Processor/images/test/*"):
+               file_name = i.split('/')[-1]
+               img1 = cv2.imread(i)
+               img = cv2.resize(img1, (224,224))
+
+               # convert the image to a tensor for inference
+               img = np.expand_dims(img, 0).astype(np.float32) / 255.0
+               preds = np.squeeze(model.predict(img)[0]) 
+               index = np.argmax(preds)
+               cls_name =class_name[index]
+               cv2.putText(img1, cls_name, (50,50), cv2.FONT_HERSHEY_SIMPLEX, 
+               1, (255, 0, 0), 3, cv2.LINE_AA)
+               cv2.imwrite(dest_path+file_name,img1)
+            </code>
+        </pre>
     </div>
 
     <div class="row">
-        <h4>Model Head:</h4>
-        <p>The model Head is mainly used to perform the final detection part. It applied anchor boxes on
-            features and generated final output vectors with class, probabilities, objectness, and bounding boxes. 
-        </p>
+       <h4>Model Prediction</h4>
+       <img src="assets/modelHubImageFiles/MPrediction1.PNG" alt="" />
+       <img src="assets/modelHubImageFiles/MPredection2.PNG" alt="" />
+       <img src="assets/modelHubImageFiles/MPredection3.PNG" alt="" />
+       <img src="assets/modelHubImageFiles/MPredection4.PNG" alt="" />
+      
     </div>
-
-    <div class="row">
-        <h4>Activation Function used in Yolo v5 model:</h4>
-        <p>In Yolo v5 the Leaky Relu activation function is used in the middle/hidden layers and the sigmoid
-           activation function is used in the final detection layer.
-        </p>
-    </div>
-
-    <div class="row">
-        <h4>Optimization Function:</h4>
-        <p>For the optimization function in YOLO v5, we have two options.
-        </p>
-        <li>SGD</li>
-        <li>Adam</li>
-        <p>In YOLO v5, the default optimization function for training is SGD.
-            However, you can change it to Adam by using the “—ada m” command-line argument.
-            </p>
-    </div>
-
-    <div class="row">
-        <h4>Cost Function or Loss Function:</h4>
-        <p>In the Yolo family, there is compound loss is calculated based on the objectness score, class probability score,
-           and bounding box regression score.Ultralytics have used Binary Cross-Entropy with the
-        Logit Loss function from Pytorch to calculate the class probability and object score loss.
-        </p>
-    </div>
+      
    
 
-    <div class="row">
-        <h2> Process of Training Object Detection Model using Yolov5  </h2>
-        <h4>Prepare a custom dataset: </h4>
-        <div >
-            <div class="row">
-            <li> Annotate the images using the labeling tool. </li>
-            <img src="assets/modelHubImageFiles/DetectionModel.png" alt="" />
-             </div> <br>
-            <li> Convert the XML to .txt format.</li>
-            <li>Split the datasets into train, test, and validation datasets.</li>
-            <li>Create a custom.YAML file modifying the existing class according to our requirement and added more 
-                classes to detect each defect
-            </li>
-            <pre>
-                <code>
-                    train: /content/drive/MyDrive/pcb_board/All_Defects/train  # train images (relative to 'path') 128 images
-                    val: /content/drive/MyDrive/pcb_board/All_Defects/val  # val images (relative to 'path') 128 images
-                    test: /content/drive/MyDrive/pcb_board/All_Defects/test  # test images (optional)
-                     # class names
-                     names: ['Soldering_Missing','mouse_bite','open_circuit','short','spur','spurious_copper']
-                </code>
-            </pre>
-          
-            <li>Installing Required Libraries</li>
-            <pre>
-                <code>
-                    !pip install -r /content/drive/MyDrive/yolov5/requirements.txt
-                </code>
-            </pre>
-            <li>Train and hyper-tune the model.</li>
-            <pre>
-                <code>
-                     
-                !python train.py --img 640 --batch 8 --epochs 150 --data custom.yaml --weights /content/drive/MyDrive/yolov5/runs/train/exp/weights/last.pt
-                </code>
-            </pre>
-
-            <li>Check the training graph.</li>
-            <pre>
-                <code>
-                    # logs save in the folder "runs"
-                     %load_ext tensorboard
-                     %tensorboard --logdir runs/train
-                </code>
-            </pre>
-        </div>
-    </div> <br>
-
-    <div class="row">
-        <h4>Metrics Graph </h4>
-        <img src="assets/modelHubImageFiles/MetricsGraph.png" alt="" />
-        <h4>Train Graph </h4>
-        <img src="assets/modelHubImageFiles/TrainGraph.png" alt="" />
-        <h4>Validation_Graph </h4>
-        <img src="assets/modelHubImageFiles/ValidationGraph.png" alt="" />
-        <img src="assets/modelHubImageFiles/Validation.png" alt="" />
-        <img src="assets/modelHubImageFiles/PrecesionCurve.png" alt="" />
-    </div>
-    <li>Test the model.</li>
-    <pre>
-        <code>
-            !python detect.py --weights /content/drive/MyDrive/yolov5/runs/train/exp/weights/best_100epoch.
-            pt --source /content/drive/MyDrive/pcb_board/All_Defects/new_test
-        </code>
-    </pre>
-   <div class="row">
-    <li>Model Prdection</li>
-    <img src="assets/modelHubImageFiles/ModelPredection.png" alt="" /> <br>
-    <img src="assets/modelHubImageFiles/ModelPredection2.jpg" alt="" />
-</div>
+    
 
 </div>
