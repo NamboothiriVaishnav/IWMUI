@@ -17,6 +17,9 @@ import { DataModelComponent } from './data-model/data-model.component';
 import { DatasetComponent } from './dataset/dataset.component';
 import { ModelHubModelComponent } from './model-hub/model-hub-model/model-hub-model.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 const environmentVariable = environment;
 @NgModule({
   declarations: [
@@ -27,11 +30,15 @@ const environmentVariable = environment;
     HeaderComponent,
     DataModelComponent,
     DatasetComponent,
-    ModelHubModelComponent
+    ModelHubModelComponent,
+   
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     MsalModule.forRoot(new PublicClientApplication({ // MSAL Configuration
       auth: {
         clientId: environmentVariable.clientId,

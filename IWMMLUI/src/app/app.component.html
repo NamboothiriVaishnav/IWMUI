@@ -4,11 +4,14 @@
     <app-header></app-header>
   </div>
 
- <div class="row main">
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>  
- </div>
+  <div class="row main">
+    <div class="container">
+      <ngx-spinner type="ball-scale-multiple">
+        <p style="font-size: 20px; color: white; align-content: center">Please wait</p>
+      </ngx-spinner>
+      <router-outlet></router-outlet>
+    </div>  
+   </div>
  
  <div class="footer bg-dark">
   <div class="container-fluid">
