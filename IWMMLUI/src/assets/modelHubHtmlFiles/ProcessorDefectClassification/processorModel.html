@@ -1,25 +1,11 @@
 <div>
     <div class="row">
         <h2>Overview</h2>
-        <p class="text-justify">Today`s increased level of automation in manufacturing also demands automation of material quality
-            inspection with little human intervention. The trend is to reach human level accuracy or more in quality inspection
-            with automation. To stay competitive, modern Industrial firms strive to achieve both quantity and quality with 
-            automation without compromising one over the other. This posting takes user through a use case of deep learning
-            and showcases the need for optimizing the full stack (algorithms, inference framework and hardware accelerators)
-            to get the optimal performance.</p>
+        <p class="text-justify">Today`s increased level of automation in manufacturing also demands automation of material quality inspection with little human intervention. The trend is to reach human level accuracy or more in quality inspection with automation. To stay competitive, modern Industrial firms strive to achieve both quantity and quality with automation without compromising one over the other.
+            To meet industry standards quality inspectors in manufacturing firms, inspect product quality usually after the product is manufactured, AI can be used to inspect products at various stages of the manufacturing process to ensure they meet quality standards. And also, AI can be used to optimize various manufacturing processes, such as casting and forging, to improve efficiency and reduce costs.
+            </p>
     </div>
 
-    <div class="row">
-        <h2>Deep Learning for Quality inspection:</h2>
-        <p class="text-justify">To meet industry standards quality inspectors in manufacturing firms inspect product quality 
-            usually after the product is manufactured, it`s a time consuming manual effort and a rejected product results in
-             wasted upstream factory capacity, consumables, labor and cost. With the modern trend of Artificial Intelligence,
-            industrial firms are looking to use deep learning based computer vision technology during the production cycle
-            itself to automate material quality inspection. The goal is to minimize human intervention at the same time
-            reach human level accuracy or more as well as optimize factory capacity, labor cost etc. The usage of deep learning
-            is varied, from object detection in self-driving cars to disease detection with medical imaging deep learning has
-            proved to achieve human level accuracy & better.</p>
-    </div>
     <div class="row">
         <div class="col-sm-6">
             <div class="card">
@@ -28,7 +14,7 @@
                 </div>
                 <div class="card-body">
                     <ul class="card-text">
-                        <li>YoloV5</li>
+                        <li>EfficientNet</li>
                        
                     </ul>
                 </div>
@@ -41,7 +27,8 @@
                 </div>
                 <div class="card-body">
                     <ul class="card-text">
-                        <li>Pytorch</li>
+                        <li>Tensorflow  </li>
+                        <li>Keras  </li>   
                     </ul>
                 </div>
             </div>
@@ -51,52 +38,75 @@
 
     <div class="row">
         <h2>Datasets used </h2>
-        <p class="text-danger">
+        <!-- <p class="text-danger">
             Credit: - Open Lab on Human-Robot Interaction of Peking University.
-        </p>
+        </p> -->
         <div>
-            PCB Dataset containing 6 types of defects photoshop, a graphics editor published by Adobe Systems.
-            The defects defined in the dataset are missing holes, mouse bites, open circuits, shorts, spur, and spurious copper.
-            This synthetic PCB dataset contains 1386 images with 6 defects (missing hole, mouse bite, open circuit, short, spur, 
-            spurious copper) for detection, classification, and registration tasks.
-            Add Raw Image before creating an annotation.
+            Processor datasets containing 3 types of defects and one good type, photoshoped, a graphics editor published by Adobe Systems. The defects defined in the dataset are Bend_pin, Missing_pin, Short_pins and Good pins. This synthetic Processor dataset contains 564 images with 3 defects and good or normal image. 57 images are used for testing a model.
 
         </div> 
     </div> <br>
     
     <div class="row">
         <h2>Model Hub</h2>
-        <h4>YoloV5 Model Architecture:</h4>
-        <p class="text-danger" >
-            Used under "License - version 3 of the GNU General Public License”.
+       <h5> EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks</h5>
+        <p >
+            EfficientNet is a family of convolutional neural network architectures that were designed to achieve state-of-the-art performance while being computationally efficient. The EfficientNet architecture was proposed in a 2019 paper by Mingxing Tan and Quoc Le from Google Brain.
+           The EfficientNet architecture is based on a compound scaling method that uniformly scales the network width, depth, and resolution with a set of scaling coefficients. This allows the architecture to be optimized for different resource constraints, ranging from mobile devices to high-end servers. The scaling method is based on the observation that increasing one dimension of the network requires a proportional increase in the other dimensions in order to maintain a good balance between the network's representational capacity and computational efficiency.
+           EfficientNet consists of several versions, labeled from EfficientNet-B0 to EfficientNet-B8, with increasing computational complexity and performance. EfficientNet-B0 is the smallest and most computationally efficient version, while EfficientNet-B8 is the largest and most powerful version. The architecture of EfficientNet includes multiple layers of convolutional, pooling, and activation functions, as well as a global average pooling layer and a fully connected output layer.
+            The EfficientNet architecture has achieved state-of-the-art performance on several image classification benchmarks, while requiring fewer computational resources than competing models. It has also been shown to be effective for other computer vision tasks, such as object detection and semantic segmentation.
+           
         </p>
-        <p class="text-danger" >
-            Motive: - Learning and Research purpose.
-        </p>
-        <div class="text-justify">
-        <div>
-         <a class="text-decoration-none "  href=" https://github.com/ultralytics/yolov5"> Version repository</a>
-         </div> <br>
-         <p>Yolo v5 is a single-stage object detector, it has three important parts like any other single-stage object detector.</p> 
-         <li>Model Backbone </li>
-	     <li> Model Neck</li> 
-	     <li>Model Head </li> 
-        </div>
     </div>
     <br>
 
     <div class="row">
-        <h4>Model Backbone:</h4>
-        <p>Model Backbone mainly extracts important features from the given input image.
-           In Yolo v5 the CSP- Cross Stage Partial Networks are used as a backbone to extract informative features from an input image.
+        <h4>Process of Training Image classification Model.</h4>
+        <p>The process of training an image classification model typically involves the following steps:
         </p>
+        <h3>Data Preparation: </h3>
         <p>
-           CSPNet has shown significant improvement in processing time with deeper networks.
+            Collect and prepare the dataset for training. This includes data labeling, data cleaning, data augmentation, and data normalization.
         </p>
+        <h3>Model Selection:  </h3>
+        <p>
+            Choose a suitable pre-trained model or build a custom model architecture based on the problem requirements.        </p>
+        <h3>Model Compilation:  </h3>
+        <p>
+            Define the objective function, optimizer, and evaluation metrics to be used during the training process.
+                </p>
+        <h3>Model Training:  </h3>
+        <p>
+            Train the model on the prepared dataset. This involves feeding the data to the model, computing the loss, and updating the model parameters using backpropagation.
+                </p>
+        <h3>Model Evaluation:  </h3>
+        <p>
+            Evaluate the model's performance on a validation set. This involves computing metrics such as accuracy, precision, recall, and F1 score.
+        </p>
+        <h3>Hyperparameter Tuning:   </h3>
+        <p>
+        Fine-tune the model hyperparameters, such as learning rate, batch size, and number of epochs, to optimize the model performance. 
+        </p>
+        <h3>Model Deployment:   </h3>
+        <p>
+            Once the model is trained and evaluated, it can be deployed for inference on new data. This may involve integrating the model into a web application, mobile app, or other production system.
+        </p>
+        <br>
+        <p>Throughout the training process, it is important to monitor the model performance and make adjustments as needed. This may include adjusting the training parameters, modifying the model architecture, or collecting more data. With careful preparation, training, and evaluation, it is possible to develop an accurate image classification model that can be used for a wide range of computer vision tasks.</p>
+
+    </div>
+    <div class="row">
+        
+        <h2>Installing Required Libraries</h2>
+        <p> pip install -r C:\Users\Rajesh.Mandal\Downloads\democheck\demoprocessor\requirements.txt</p>
+        <h2>Train and hyper-tune the model.</h2>
+        <p>model.fit(train_generator, validation_data=validation_generator, epochs=epochs, batch_size=bs,steps_per_epoch=len(train_generator), validation_steps=len(validation_generator))</p>
+
     </div>
 
+
     <div class="row">
-        <h4>Model Neck:</h4>
+        <h4>Model Backbone:</h4>
         <p>Model Neck is mainly used to generate feature pyramids. Feature pyramids help models to generalize well on object 
            scaling. It helps to identify the same object with different sizes and scales. Feature pyramids are very useful
            and help models to perform well on unseen data. Other models use different types of feature pyramid techniques 
