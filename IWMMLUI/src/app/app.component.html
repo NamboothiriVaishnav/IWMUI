@@ -1,0 +1,30 @@
+<div class="container-fluid">
+
+  <div class="row bg-dark">
+    <app-header></app-header>
+  </div>
+
+  <div class="row main">
+    <div class="container">
+      <ngx-spinner type="ball-scale-multiple">
+        <p style="font-size: 20px; color: white; align-content: center">Please wait</p>
+      </ngx-spinner>
+      <router-outlet></router-outlet>
+    </div>  
+   </div>
+ 
+ <div class="footer bg-dark">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">  
+        <span>Powered By</span>      
+        <img alt="" height="40" src="/assets/logo_white.png" class="rounded mx-auto d-block" alt="neudesic logo">
+      </div>
+      <div class="col-6">
+        <span>Copyright © Neudesic an IBM Company {{year}}</span>
+      </div>
+    </div>
+  </div>  
+</div>
+</div>
+

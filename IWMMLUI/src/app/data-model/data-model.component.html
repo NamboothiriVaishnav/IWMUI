@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-2 sidebar bg-light ">
+            <ul class="nav nav-sidebar">
+                <li *ngFor="let dataModelItem of dataModelDetails">
+                    <button class="btn-light" type="submit" (click)="showModel(dataModelItem.id)">
+                        <span class="d-sm-inline">{{dataModelItem.useCase}}</span></button>
+                </li>
+            </ul>
+        </div>
+        <div class="col-10">
+            <div [innerHtml]="dataModelInnerHtmlPage">
+            </div>
+        </div>
+    </div>
+</div>

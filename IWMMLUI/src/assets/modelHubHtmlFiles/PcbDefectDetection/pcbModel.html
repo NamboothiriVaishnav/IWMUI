@@ -1,0 +1,212 @@
+<div>
+    <div class="row">
+        <h2>Overview</h2>
+        <p class="text-justify">Today`s increased level of automation in manufacturing also demands automation of material quality
+            inspection with little human intervention. The trend is to reach human level accuracy or more in quality inspection
+            with automation. To stay competitive, modern Industrial firms strive to achieve both quantity and quality with 
+            automation without compromising one over the other. This posting takes user through a use case of deep learning
+            and showcases the need for optimizing the full stack (algorithms, inference framework and hardware accelerators)
+            to get the optimal performance.</p>
+    </div>
+
+    <div class="row">
+        <h2>Deep Learning for Quality inspection:</h2>
+        <p class="text-justify">To meet industry standards quality inspectors in manufacturing firms inspect product quality 
+            usually after the product is manufactured, it`s a time consuming manual effort and a rejected product results in
+             wasted upstream factory capacity, consumables, labor and cost. With the modern trend of Artificial Intelligence,
+            industrial firms are looking to use deep learning based computer vision technology during the production cycle
+            itself to automate material quality inspection. The goal is to minimize human intervention at the same time
+            reach human level accuracy or more as well as optimize factory capacity, labor cost etc. The usage of deep learning
+            is varied, from object detection in self-driving cars to disease detection with medical imaging deep learning has
+            proved to achieve human level accuracy & better.</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    Deep Learning Algorithms
+                </div>
+                <div class="card-body">
+                    <ul class="card-text">
+                        <li>YoloV5</li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    Framework
+                </div>
+                <div class="card-body">
+                    <ul class="card-text">
+                        <li>Pytorch</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <h2>Datasets used </h2>
+        <p class="text-danger">
+            Credit: - Open Lab on Human-Robot Interaction of Peking University.
+        </p>
+        <div>
+            PCB Dataset containing 6 types of defects photoshop, a graphics editor published by Adobe Systems.
+            The defects defined in the dataset are missing holes, mouse bites, open circuits, shorts, spur, and spurious copper.
+            This synthetic PCB dataset contains 1386 images with 6 defects (missing hole, mouse bite, open circuit, short, spur, 
+            spurious copper) for detection, classification, and registration tasks.
+            Add Raw Image before creating an annotation.
+
+        </div> 
+    </div> <br>
+    
+    <div class="row">
+        <h2>Model Hub</h2>
+        <h4>YoloV5 Model Architecture:</h4>
+        <p class="text-danger" >
+            Used under "License - version 3 of the GNU General Public License”.
+        </p>
+        <p class="text-danger" >
+            Motive: - Learning and Research purpose.
+        </p>
+        <div class="text-justify">
+        <div>
+         <a class="text-decoration-none "  href=" https://github.com/ultralytics/yolov5"> Version repository</a>
+         </div> <br>
+         <p>Yolo v5 is a single-stage object detector, it has three important parts like any other single-stage object detector.</p> 
+         <li>Model Backbone </li>
+	     <li> Model Neck</li> 
+	     <li>Model Head </li> 
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <h4>Model Backbone:</h4>
+        <p>Model Backbone mainly extracts important features from the given input image.
+           In Yolo v5 the CSP- Cross Stage Partial Networks are used as a backbone to extract informative features from an input image.
+        </p>
+        <p>
+           CSPNet has shown significant improvement in processing time with deeper networks.
+        </p>
+    </div>
+
+    <div class="row">
+        <h4>Model Neck:</h4>
+        <p>Model Neck is mainly used to generate feature pyramids. Feature pyramids help models to generalize well on object 
+           scaling. It helps to identify the same object with different sizes and scales. Feature pyramids are very useful
+           and help models to perform well on unseen data. Other models use different types of feature pyramid techniques 
+           like FPN, BiFPN, PANet, etc. in Yolo v5 PANet is used as a neck to get feature pyramids.
+        </p>
+    </div>
+
+    <div class="row">
+        <h4>Model Head:</h4>
+        <p>The model Head is mainly used to perform the final detection part. It applied anchor boxes on
+            features and generated final output vectors with class, probabilities, objectness, and bounding boxes. 
+        </p>
+    </div>
+
+    <div class="row">
+        <h4>Activation Function used in Yolo v5 model:</h4>
+        <p>In Yolo v5 the Leaky Relu activation function is used in the middle/hidden layers and the sigmoid
+           activation function is used in the final detection layer.
+        </p>
+    </div>
+
+    <div class="row">
+        <h4>Optimization Function:</h4>
+        <p>For the optimization function in YOLO v5, we have two options.
+        </p>
+        <li>SGD</li>
+        <li>Adam</li>
+        <p>In YOLO v5, the default optimization function for training is SGD.
+            However, you can change it to Adam by using the “—ada m” command-line argument.
+            </p>
+    </div>
+
+    <div class="row">
+        <h4>Cost Function or Loss Function:</h4>
+        <p>In the Yolo family, there is compound loss is calculated based on the objectness score, class probability score,
+           and bounding box regression score.Ultralytics have used Binary Cross-Entropy with the
+        Logit Loss function from Pytorch to calculate the class probability and object score loss.
+        </p>
+    </div>
+   
+
+    <div class="row">
+        <h2> Process of Training Object Detection Model using Yolov5  </h2>
+        <h4>Prepare a custom dataset: </h4>
+        <div >
+            <div class="row">
+            <li> Annotate the images using the labeling tool. </li>
+            <img src="assets/modelHubImageFiles/DetectionModel.png" alt="" />
+             </div> <br>
+            <li> Convert the XML to .txt format.</li>
+            <li>Split the datasets into train, test, and validation datasets.</li>
+            <li>Create a custom.YAML file modifying the existing class according to our requirement and added more 
+                classes to detect each defect
+            </li>
+            <pre>
+                <code>
+                    train: /content/drive/MyDrive/pcb_board/All_Defects/train  # train images (relative to 'path') 128 images
+                    val: /content/drive/MyDrive/pcb_board/All_Defects/val  # val images (relative to 'path') 128 images
+                    test: /content/drive/MyDrive/pcb_board/All_Defects/test  # test images (optional)
+                     # class names
+                     names: ['Soldering_Missing','mouse_bite','open_circuit','short','spur','spurious_copper']
+                </code>
+            </pre>
+          
+            <li>Installing Required Libraries</li>
+            <pre>
+                <code>
+                    !pip install -r /content/drive/MyDrive/yolov5/requirements.txt
+                </code>
+            </pre>
+            <li>Train and hyper-tune the model.</li>
+            <pre>
+                <code>
+                     
+                !python train.py --img 640 --batch 8 --epochs 150 --data custom.yaml --weights /content/drive/MyDrive/yolov5/runs/train/exp/weights/last.pt
+                </code>
+            </pre>
+
+            <li>Check the training graph.</li>
+            <pre>
+                <code>
+                    # logs save in the folder "runs"
+                     %load_ext tensorboard
+                     %tensorboard --logdir runs/train
+                </code>
+            </pre>
+        </div>
+    </div> <br>
+
+    <div class="row">
+        <h4>Metrics Graph </h4>
+        <img src="assets/modelHubImageFiles/MetricsGraph.png" alt="" />
+        <h4>Train Graph </h4>
+        <img src="assets/modelHubImageFiles/TrainGraph.png" alt="" />
+        <h4>Validation_Graph </h4>
+        <img src="assets/modelHubImageFiles/ValidationGraph.png" alt="" />
+        <img src="assets/modelHubImageFiles/Validation.png" alt="" />
+        <img src="assets/modelHubImageFiles/PrecesionCurve.png" alt="" />
+    </div>
+    <li>Test the model.</li>
+    <pre>
+        <code>
+            !python detect.py --weights /content/drive/MyDrive/yolov5/runs/train/exp/weights/best_100epoch.
+            pt --source /content/drive/MyDrive/pcb_board/All_Defects/new_test
+        </code>
+    </pre>
+   <div class="row">
+    <li>Model Prdection</li>
+    <img src="assets/modelHubImageFiles/ModelPredection.png" alt="" /> <br>
+    <img src="assets/modelHubImageFiles/ModelPredection2.jpg" alt="" />
+</div>
+
+</div>

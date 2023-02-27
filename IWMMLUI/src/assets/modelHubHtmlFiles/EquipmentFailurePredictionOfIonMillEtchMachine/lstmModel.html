@@ -1,0 +1,363 @@
+<div>
+    <div class="row">
+        <h2>Overview</h2>
+        <p class="text-justify">Machine Learning and Deep Learning models helps to carry out predictive maintenance of Ion Mill
+            Etch Machine. The core concept of the methodology is to monitor some of the Sensor values
+            and predict the condition of Machine. This helps to prevent catastrophic failure and unnecessary
+            testing and maintenance thus reducing the overall operating cost and time required for maintenance.</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    Machine Learning Algorithms
+                </div>
+                <div class="card-body">
+                    <ul class="card-text">
+                        <li>Decision Tree Classifier</li>
+                        <li>Random Forest Classifier</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    Deep Learning Algorithms
+                </div>
+                <div class="card-body">
+                    <ul class="card-text">
+                        <li>Long short-term memory (LSTM)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>
+        <h3>ModelPredection </h3>
+        <p>Click on ion-mill Prediction and pass the new data set to the model</p>
+        <a class="text-decoration-none "   href="https://ion-mill.azurewebsites.net/" target="_blank">ion-mill Prediction</a>
+    </div> <br>
+
+    <div class="row">
+        <h2>Datasets used </h2>
+        <p class="text-justify">
+            • Sensor Data which is machines execution data
+        </p>
+
+        <p class="text-justify">
+            • Classification Data which contain different failure class
+        </p>
+        
+    </div>
+    
+    <div class="row">
+        <h2>Data size</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Dataset Name</th>
+                        <th scope="col">Dataset Size</th>
+                        <th scope="col">Total Record</th>
+                        <th scope="col">Normal Record</th>
+                        <th scope="col">Abnormal Record</th>
+                        <th scope="col">No of columns</th>
+                        <th scope="col">No of machines</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr scope="row">
+                        <td>Sensor Data</td>
+                        <td>27 GB </td>
+                        <td>82,189,440</td>
+                        <td>82,188,204</td>
+                        <td>82,188,204 </td>
+                        <td>24</td>
+                        <td>2</td>
+                    </tr>
+                    <tr scope="row">
+                        <td>Classification Data</td>
+                        <td>104 KB </td>
+                        <td>1,236</td>
+                        <td>1,236</td>
+                        <td>0 </td>
+                        <td>3</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <h2>Data of Interest </h2>
+        <p class="text-justify">
+        Machines Actual Reading: -Considering only sensors reading, time and tool</p>
+            <li>Tool</li>  
+            <li>Time</li>  
+            <li>ETCHSUPPRESSORCURRENT</li>  
+            <li>FLOWCOOLPRESSURE</li>
+            <li>ACTUALROTATIONANGLE</li>  
+            <li>ACTUALSTEPDURATION</li> 
+        </div> <br>
+
+        <div class="row">
+        <p class="text-justify">
+         Classification Data:- </p>
+        <li>TIME</li>  
+        <li>FAULTNAME</li>  
+        <li>TOOL</li> 
+        </div> <br>
+    
+    <div class="row">
+        <h2>Dataset description </h2>
+        <p class="text-justify">
+            • Machines Actual Reading Dataset
+        </p>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Parameter Name</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr scope="row">
+                        <td>Time</td>
+                        <td>Numeric </td>
+                        <td>Time Id</td>
+                    </tr>
+                    <tr scope="row">
+                        <td>Tool</td>
+                        <td>Categorical </td>
+                        <td>Tool Id</td>
+                    </tr>
+                    <tr scope="row">
+                        <td>Stage</td>
+                        <td>Categorical </td>
+                        <td>Processing stage of water</td>
+                    </tr>
+                    <tr scope="row">
+                        <td>Lot</td>
+                        <td>Categorical</td>
+                        <td>Wafer Id</td>
+                    </tr>
+                    <tr scope="row">
+                        <td>Runnum</td>
+                        <td>Numeric</td>
+                        <td>Number of times tool has been run</td>
+                    </tr>
+                    <tr scope="row">
+                        <td>Recipe</td> 
+                        <td>Categorical</td>
+                        <td>Describes tool settings used to process wafer</td>
+                    </tr>
+                    <tr scope="row">
+                        <td>Recipe_step</td>
+                        <td>Categorical</td>
+                        <td>Process step of a recipe</td>
+                    </tr>
+                    <tr scope="row">
+                        <td>IONGAUGEPRESSURE</td>
+                        <td>Numeric (Sensor)</td>
+                        <td>Pressure reading for the main process chamber when under vacuum</td>
+                    </tr>
+                    <tr scope="row">
+                        <td>ETCHBEAMVOLTAGE</td>
+                        <td>Numeric </td>
+                        <td>Voltage potential applied to the beam plate of the grid assembly </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>ETCHBEAMCURRENT</td>
+                        <td>Numeric </td>
+                        <td>Ion current impacting the beam grid determining the amount of ions accelerated through the grid assembly to the wafer </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>ETCHSUPPRESSORVOLTAGE</td>
+                        <td>Numeric </td>
+                        <td>Voltage potential applied to the suppressor plate of the grid assembly </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>ETCHSUPPRESSORCURRENT</td>
+                        <td>Numeric (Sensor) </td>
+                        <td>Ion current impacting the suppressor grid plate </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>FLOWCOOLFLOWRATE</td>
+                        <td>Numeric </td>
+                        <td>Rate of flow of helium through the flowcool circuit, controlled by mass flow controller </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>FLOWCOOLPRESSURE</td>
+                        <td>Numeric(sensor) </td>
+                        <td>Resulting helium pressure in the flowcool circuit </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>ETCHGASCHANNEL1READBACK</td>
+                        <td>Numeric </td>
+                        <td>Rate of flow of argon into the source assembly in the vacuum chamber </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>ETCHPBNGASREADBACK</td>
+                        <td>Numeric </td>
+                        <td>Rate of flow of argon into the PBN assembly in the chamber </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>FIXTURETILTANGLE</td>
+                        <td>Numeric </td>
+                        <td>Wafer tilt angle setting </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>ROTATIONSPEED</td>
+                        <td>Numeric </td>
+                        <td>Wafer rotation speed setting </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>ACTUALROTATIONANGLE</td>
+                        <td>Numeric(sensor) </td>
+                        <td>Measure wafer rotation angle </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>FIXTURESHUTTERPOSITION</td>
+                        <td>Numeric </td>
+                        <td>Open / close shutter setting for wafer shielding </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>ETCHSOURCEUSAGE</td>
+                        <td>Numeric </td>
+                        <td>Counter of use for the grid assembly consumable</td>
+                    </tr>
+                    <tr scope="row">
+                        <td>ETCHAUXSOURCETIMER</td>
+                        <td>Numeric </td>
+                        <td>Counter of the use for the chamber shields consumable </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>ETCHAUX2SOURCETIMER</td>
+                        <td>Numeric </td>
+                        <td>Counter of the use for the chamber shields consumable </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>ACTUALSTEPDURATION</td>
+                        <td>Numeric(sensor) </td>
+                        <td>Measured time duration for a particular step</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    
+    <div class="row">
+        <p class="text-justify">
+            • Classification Data
+        </p>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Parameter Name</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr scope="row">
+                        <td>Time</td>
+                        <td>Numeric </td>
+                        <td>Time </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>Fault_name</td>
+                        <td>Categorical </td>
+                        <td>Name of the particular class of fault that occurred at the   specified time </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>Tool</td>
+                        <td>Categorical </td>
+                        <td>Tool Id </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <h3>Usage</h3>
+        <p>Before passing sensor values as input to the Failure Prediction and Future Dataset Generation models, input sensor
+           values have been normalized in range of 0-1 including boundaries. The input sensors column used are as following :-
+           IONGAUGEPRESSURE, ETCHSUPPRESSORCURRENT, FLOWCOOLPRESSURE, ACTUALROTATIONANGLE, ACTUALSTEPDURATION. This is done
+           to make the data distribution uniform throughout the range of 0-1.
+        </p>
+    </div>
+    <div class="row">
+        <h4>Input</h4>
+        <p>The details of transformer(s) as mentioned in the dataset in the same order</p>
+            <pre>
+            <code>
+                path ="/content/drive/MyDrive/trainM102_FaultM102_51l.csv"
+                Sensor_data =pd.read_csv(path)
+                train = sensor_data.iloc[0:3577379]
+                test = sensor_data.iloc[3577379:]
+                from sklearn.preprocessing import MinMaxScaler
+                scaler = MinMaxScaler()
+                scaler.fit(train)
+                scaled_train = scaler.transform(train)
+                scaled_test = scaler.transform(test)         
+            </code>
+        </pre>
+    </div>
+    
+    <div class="row">
+        <h4>Load Model</h4>
+        <h5>LSTM Model</h5>
+        <pre>
+            <code>   
+             import tensorflow as tf
+             lstm_multi=tf.keras.models.Sequential()
+             lstm_multi.add(tf.keras.layers.LSTM(100,input_shape=(length,scaled_train.shape[1]),return_sequences=True))
+             lstm_multi.add(tf.keras.layers.Dropout(0.2)),
+             lstm_multi.add(tf.keras.layers.LSTM(units=100,return_sequences=False)),
+             lstm_multi.add(tf.keras.layers.Dropout(0.2)),
+             lstm_multi.add(tf.keras.layers.Dense(scaled_train.shape[1])),
+             lstm_multi.compile(optimizer='adam',loss='mse')
+         
+            </code>
+        </pre>
+        <p>'X' contains the values of various attributes of one/more transformers as mentioned in the dataset</p>
+        <h5>ML Model</h5>
+        <pre>
+            <code> 
+                <h5>RANDOM FOREST</h5>
+               from sklearn.ensemble import RandomForestClassifier
+               classifier = RandomForestClassifier(n_estimators=20, random_state=0, criterion='entropy')
+               classifier.fit(X_train, y_train)
+
+               <h5>DECISION TREE ML MODEL</h5>
+               from sklearn.tree import DecisionTreeClassifier
+               from sklearn.metrics import accuracy_score
+               #instantiate the DecisionTreeClassifier model with criterion gini index
+               clf_gini = DecisionTreeClassifier(criterion='gini', max_depth=3, random_state=0)
+               # fit the model
+               clf_gini.fit(X_train, y_train)
+            </code>
+        </pre>
+        <p>'x_test' is same as 'X'</p>
+        <p class="text-warning text-justify">
+            NB: It is advised to refer to the respective model documentations for loading models,
+            since there are chances of changes in loading models code in future if new updates
+            are made by the respective authors
+        </p>
+    </div>
+    <div class="row">
+        <h4>Train and test data graph </h4>
+        <img src="assets/modelHubImageFiles/test&train.png" alt="" />
+        <h4>LSTM Visualization </h4>
+        <img src="assets/modelHubImageFiles/LSTM.png" alt="" />
+    </div>
+</div>

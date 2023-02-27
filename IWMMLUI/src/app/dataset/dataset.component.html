@@ -1,0 +1,34 @@
+<div class="container">
+
+    <div>
+      <input type="file" class="file-input" (change)="uploadFile($event)" #fileUpload />
+      <button type="button" class="btn btn-outline-primary" style="margin: 0.2em" (click)="fileUpload.click()">
+        <span class="upload-text">Upload</span>
+      </button>
+    </div>
+
+    <div class="third" style="grid-column: 1 / 3">
+      <div id="file-window-box">
+        <table class="table" id="excel-table">
+          <thead class="table-active">
+            <tr>
+              <th scope="col" *ngFor="let headerItem of headerSource">
+                {{ headerItem }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of apiDataSource">
+              <td>
+                {{ item.name }}
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+</div>
+  
+  
