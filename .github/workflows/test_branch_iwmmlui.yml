@@ -4,7 +4,7 @@
 name: Build and deploy Node.js app to Azure Web App - IWMMLUI
 defaults:
   run:
-    working-directory: client # The working directory path
+    working-directory: IWMMLUI # The working directory path
 on:
   push:
     branches:
