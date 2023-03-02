@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'IWMMLUI'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9F2D48C9EE5B4B3CB52E08D128BCC9E4 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_299BB0B4BCEE4FF3AF142B423690ECAC }}
           package: .
